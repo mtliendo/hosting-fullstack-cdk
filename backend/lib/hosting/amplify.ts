@@ -22,6 +22,7 @@ export function createAmplifyHosting(
 			repository: props.repo,
 			oauthToken: SecretValue.secretsManager(props.ghTokenName),
 		}),
+		platform: amplify.Platform.WEB_COMPUTE,
 		autoBranchDeletion: true,
 		customRules: [
 			{
@@ -59,8 +60,6 @@ export function createAmplifyHosting(
 		stage: props.branch === 'main' ? 'PRODUCTION' : 'DEVELOPMENT',
 		branchName: props.branch,
 	})
-
-	amplify.Platform.WEB_COMPUTE
 
 	return amplifyApp
 }
